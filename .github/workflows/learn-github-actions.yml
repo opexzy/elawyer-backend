@@ -49,4 +49,6 @@ jobs:
           envkey_BASE_URL: localhost:8000
           file_name: .env
       - name: Run Migrations # run migrations to create table in side car db container
-        run: python manage.py migrate
+        run: |
+          sudo cd elawyer
+          python manage.py migrate
