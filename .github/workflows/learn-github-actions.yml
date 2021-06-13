@@ -50,5 +50,5 @@ jobs:
           file_name: .env
       - name: Run Migrations # run migrations to create table in side car db container
         run: |
-          sudo cd elawyer
+          cd elawyer
           python manage.py migrate
