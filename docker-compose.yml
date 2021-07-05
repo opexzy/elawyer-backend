@@ -17,18 +17,17 @@ services:
     db:
         image: postgres:12.0-alpine
         volumes:
-          - postgres_data:/var/lib/postgresql/data/
+            - postgres_data:/var/lib/postgresql/data/
         environment:
-          - POSTGRES_USER=dev_user
-          - POSTGRES_PASSWORD=dev_password
-          - POSTGRES_DB=elawyer_dev
-
-    volumes:
-        postgres_data:
-
+            - POSTGRES_USER=dev_user
+            - POSTGRES_PASSWORD=dev_password
+            - POSTGRES_DB=elawyer_dev
+          
     nginx:
         build: ./elawyer-app/elawyer-backend/nginx
         ports:
             - 80:80
         depends_on:
             - web
+volumes:
+    postgres_data:
