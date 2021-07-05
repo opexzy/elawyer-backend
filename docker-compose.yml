@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     web:
-        build: ./elawyer-backend
+        build: .
         command: gunicorn elawyer_dev.wsgi:application --bind 0.0.0.0:8000
         volumes:
             - ./elawyer-backend/:/usr/src/elawyer-backend/
@@ -23,7 +23,7 @@ services:
             - POSTGRES_DB=elawyer_dev
           
     nginx:
-        build: ./elawyer-backend/nginx
+        build: ./nginx
         ports:
             - 80:80
         depends_on:
