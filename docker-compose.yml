@@ -2,11 +2,11 @@ version: '3.7'
 
 services:
     web:
-        build: ./elawyer-app/elawyer-backend
+        build: ./elawyer-backend
         command: cd /elawyer-backend
         command: gunicorn elawyer_dev.wsgi:application --bind 0.0.0.0:8000
         volumes:
-            - ./app/:/usr/src/elawyer-app/
+            - ./elawyer-backend/:/usr/src/elawyer-backend/
         expose:
             - 8000
         env_file:
@@ -24,7 +24,7 @@ services:
             - POSTGRES_DB=elawyer_dev
           
     nginx:
-        build: ./elawyer-app/elawyer-backend/nginx
+        build: ./elawyer-backend/nginx
         ports:
             - 80:80
         depends_on:
