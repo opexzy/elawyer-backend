@@ -1,9 +1,10 @@
 ###########
 # BUILDER #
 ###########
+FROM ubuntu:20.04
 
 # pull official base image
-FROM python:3.8.3-alpine as builder
+FROM python:3.8.3
 
 # set work directory
 WORKDIR /usr/src/elawyer-backend
