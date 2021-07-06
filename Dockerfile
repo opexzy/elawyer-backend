@@ -13,8 +13,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
-RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev libffi-dev tiff-dev jpeg-dev openjpeg-dev zlib-dev freetype-dev lcms2-dev \
+RUN apt-get update && \
+    apt-get install -y postgresql-dev gcc python3-dev musl-dev libffi-dev tiff-dev jpeg-dev openjpeg-dev zlib-dev freetype-dev lcms2-dev \
     libwebp-dev tcl-dev tk-dev harfbuzz-dev fribidi-dev libimagequant-dev gunicorn \
     libxcb-dev libpng-dev
 
