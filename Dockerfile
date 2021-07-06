@@ -15,9 +15,8 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apt-get update && \
-    apt-get install -y postgresql gcc python3-dev musl-dev libffi-dev libtiff-dev libjpeg-dev libopenjpeg-dev zlib1g-dev libfreetype-dev liblcms2-dev \
-    libwebp-dev tcl-dev tk-dev libharfbuzz-dev libfribidi-dev libimagequant-dev gunicorn \
-    libxcb-util-dev libpng-dev
+    apt-get install -y postgresql gcc python3-dev musl-dev libffi-dev libtiff-dev libjpeg-dev zlib1g-dev \
+    libwebp-dev tcl-dev tk-dev libharfbuzz-dev libfribidi-dev libimagequant-dev gunicorn libpng-dev
 
 # lint
 #RUN pip install --upgrade pip
