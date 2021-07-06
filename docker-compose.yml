@@ -3,7 +3,7 @@ version: '3.7'
 services:
     web:
         build: .
-        command: bash -c 'cd elawyer'
+        command: bash -c "cd elawyer"
         command: gunicorn elawyer.wsgi:application --bind 0.0.0.0:8000
         volumes:
             - ./elawyer-backend/:/usr/src/elawyer-backend/
