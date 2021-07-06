@@ -3,7 +3,8 @@ version: '3.7'
 services:
     web:
         build: .
-        command: gunicorn elawyer_dev.wsgi:application --bind 0.0.0.0:8000
+        command: cd elawyer
+        command: gunicorn elawyer.wsgi:application --bind 0.0.0.0:8000
         volumes:
             - ./elawyer-backend/:/usr/src/elawyer-backend/
         expose:
