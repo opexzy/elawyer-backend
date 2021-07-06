@@ -32,7 +32,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/elawyer-backend/whee
 #COPY ./entrypoint.sh .
 
 # copy project
-COPY . .
+COPY . /usr/src/elawyer-backend
 
 # run entrypoint.sh
 # ENTRYPOINT ["/usr/src/elawyer-backend/entrypoint.sh"]
