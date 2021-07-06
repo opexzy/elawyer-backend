@@ -26,13 +26,13 @@ RUN apk update \
 
 # install dependencies
 COPY ./requirements.txt .
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/elawyer-backend/wheels -r requirements.txt
 
 # copy entrypoint.sh
-COPY ./entrypoint.sh .
+#COPY ./entrypoint.sh .
 
 # copy project
 COPY . .
 
 # run entrypoint.sh
-ENTRYPOINT ["/usr/src/elawyer-backend/entrypoint.sh"]
+# ENTRYPOINT ["/usr/src/elawyer-backend/entrypoint.sh"]
