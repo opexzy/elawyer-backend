@@ -7,8 +7,9 @@ FROM ubuntu
 WORKDIR /usr/src/elawyer-backend
 
 # set environment variables
-#ENV PYTHONDONTWRITEBYTECODE 1
-#ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV DEBIAN_FRONTEND noninteractive
 
 #Copy requirements file to working directory
 COPY requirements.txt requirements.txt
