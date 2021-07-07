@@ -1,22 +1,24 @@
 ###########
 # BUILDER #
 ###########
-FROM ubuntu:20.04
-
-# pull official base image
-FROM python:3.8.3
+FROM ubuntu
 
 # set work directory
 WORKDIR /usr/src/elawyer-backend
 
 # set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+#ENV PYTHONDONTWRITEBYTECODE 1
+#ENV PYTHONUNBUFFERED 1
+
+#Copy requirements file to working directory
+COPY requirements.txt requirements.txt
 
 # install psycopg2 dependencies
 RUN apt-get update && \
-    apt-get install -y postgresql gcc python3-dev musl-dev libffi-dev libtiff-dev libjpeg-dev zlib1g-dev \
-    libwebp-dev tcl-dev tk-dev libharfbuzz-dev libfribidi-dev libimagequant-dev gunicorn libpng-dev
+    apt-get install -y postgresql gcc python3-dev python3-pip python3-setuptools \
+    python3-wheel musl-dev libffi-dev libtiff-dev libjpeg-dev zlib1g-dev \
+    libwebp-dev tcl-dev tk-dev libharfbuzz-dev libfribidi-dev libimagequant-dev gunicorn libpng-dev \
+    && pip3 install -r requirements.txt
 
 # lint
 #RUN pip install --upgrade pip
@@ -25,8 +27,8 @@ RUN apt-get update && \
 #RUN flake8 --ignore=E501,F401 .
 
 # install dependencies
-COPY ./requirements.txt .
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/elawyer-backend/wheels -r requirements.txt
+#COPY ./requirements.txt .
+#RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/elawyer-backend/wheels -r requirements.txt
 
 # copy entrypoint.sh
 #COPY ./entrypoint.sh .
