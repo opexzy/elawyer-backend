@@ -10,7 +10,7 @@ ENV_SETTING = config('ENV_SETTING')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '143.198.162.27', 'elawyer-frontend.vercel.app']
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
