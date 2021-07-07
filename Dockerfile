@@ -17,7 +17,7 @@ COPY requirements.txt requirements.txt
 # install psycopg2 dependencies
 RUN apt-get update && \
     apt-get install -y postgresql gcc python3-dev python3-pip python3-setuptools \
-    python3-wheel musl-dev libtiff-dev libjpeg-dev zlib1g-dev \
+    python3-wheel musl-dev libpq-dev libtiff-dev libjpeg-dev zlib1g-dev \
     libwebp-dev tcl-dev tk-dev libharfbuzz-dev libfribidi-dev libimagequant-dev gunicorn libpng-dev \
     && pip3 install -r requirements.txt
 
