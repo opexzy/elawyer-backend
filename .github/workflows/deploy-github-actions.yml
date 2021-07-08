@@ -79,5 +79,5 @@ jobs:
             docker-compose down -v
             docker-compose build
             docker-compose up -d
-            docker-compose exec web python3 elawyer/manage.py migrate --noinput
+            docker-compose exec -T web python3 elawyer/manage.py migrate --noinput
 
