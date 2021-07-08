@@ -1,10 +1,13 @@
-name: Python package
+name: Test and Deploy Workflow
 
-on: [push]
+on: 
+  push:
+    branches:
+      - 'develop'
 
 jobs:
   build:
-
+    name: Dependency Installation, Migration and Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -48,6 +51,7 @@ jobs:
           envkey_DB_USER: postgres
           envkey_DB_PASSWORD: postgres
           envkey_DB_HOST: localhost
+          envkey_DB_PORT: 5432
           envkey_BASE_URL: localhost:8000
           envkey_CELERY_BROKER_URL: amqp://guest:guest@rabbit:5672//
           file_name: .env
@@ -55,3 +59,25 @@ jobs:
         run: |
           cd elawyer
           python manage.py migrate
+          python manage.py test
+
+  deploy:
+    name: Deploy changes to Development Server remote ssh
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Deploy changes using remote ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: 143.198.162.27
+          username: root
+          password: Opeyemi.2217
+          port: 22
+          script: |
+            cd django/elawyer-backend
+            git pull https://opexzy:samuelopex4lyf@github.com/opexzy/elawyer-backend.git develop:develop
+            docker-compose down -v
+            docker-compose build
+            docker-compose up -d
+            docker-compose exec web python3 elawyer/manage.py migrate --noinput
+
